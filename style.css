@@ -1,0 +1,217 @@
+/* ==========================================================================
+   1. Resets e Configurações Globais
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #141414; /* Preto característico da Netflix */
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Fonte padrão */
+    -webkit-font-smoothing: antialiased; /* Melhora a renderização no Mac */
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+}
+
+/* Links não devem ter sublinhado e herdam a cor do pai */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Lista sem marcadores */
+ul {
+    list-style: none;
+}
+
+/* Botões padrões sem bordas e com cursor de pointer */
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ==========================================================================
+   2. Header (Navbar)
+   ========================================================================== */
+.top-navigation {
+    height: 70px; /* Altura padrão da barra */
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0)); /* Gradiente sutil no topo */
+    display: flex;
+    align-items: center;
+    padding: 0 4%; /* Margem lateral responsiva */
+    position: fixed; /* Fixa o topo */
+    top: 0;
+    z-index: 10; /* Garante que fique acima do conteúdo */
+}
+
+.top-navigation .logo {
+    height: 30px; /* Tamanho controlado do logo sugerido */
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   3. Container Principal (Área de Seleção)
+   ========================================================================== */
+.profile-gate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa a altura inteira da tela */
+    text-align: center;
+}
+
+.profile-selection h1 {
+    font-size: 3.5vw; /* Tamanho responsivo baseado na largura da tela */
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Media query para telas menores (mobile) */
+@media (max-width: 800px) {
+    .profile-selection h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ==========================================================================
+   4. Lista de Perfis (A "Grid")
+   ========================================================================== */
+.profile-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2vw; /* Espaçamento responsivo entre os perfis */
+    margin-bottom: 4em;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+
+.profile-item {
+    width: 10vw; /* Largura responsiva do card */
+    min-width: 84px; /* Tamanho mínimo para mobile */
+    max-width: 150px; /* Tamanho máximo para desktop */
+}
+
+/* ==========================================================================
+   5. Estilização do Card de Perfil (Avatar + Nome)
+   ========================================================================== */
+
+/* O link envolve todo o card */
+.profile-link {
+    display: block;
+    width: 100%;
+}
+
+/* Container do Avatar (necessário para o efeito de borda) */
+.profile-avatar {
+    width: 100%;
+    position: relative;
+    border: 0.3vw solid transparent; /* Borda invisível para evitar pulos no hover */
+    border-radius: 4px;
+    transition: transform 0.2s ease-out, border-color 0.2s ease-out; /* Animação suave */
+}
+
+/* Imagem do Avatar */
+.profile-avatar img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Garante que seja quadrado perfeito */
+    object-fit: cover; /* Mantém a proporção da imagem gerada */
+    border-radius: 4px;
+    display: block;
+}
+
+/* Legenda (Nome do Perfil) */
+.profile-avatar figcaption {
+    margin-top: 0.8em;
+    display: block;
+    color: #808080; /* Cor cinza padrão */
+    font-size: 1.3vw; /* Responsivo */
+    min-font-size: 12px;
+    transition: color 0.2s ease-out;
+}
+
+/* ==========================================================================
+   6. Efeitos de Hover (Interação)
+   ========================================================================== */
+
+/* Quando o mouse passa sobre o link, anima o avatar e o texto */
+.profile-link:hover .profile-avatar {
+    transform: scale(1.02); /* Leve aumento */
+    border-color: #e5e5e5; /* Borda branca/cinza claro aparece */
+}
+
+.profile-link:hover figcaption {
+    color: #fff; /* Nome fica branco no hover */
+}
+
+/* ==========================================================================
+   7. Estilização do Botão "Adicionar Perfil"
+   ========================================================================= */
+.add-profile-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* Wrapper do ícone para ter o mesmo comportamento do avatar */
+.add-profile-btn .icon-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Quadrado */
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #808080; /* Cor cinza inicial */
+    font-size: 6vw; /* Ícone grande */
+    max-font-size: 80px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* Texto abaixo do ícone */
+.add-profile-btn span {
+    margin-top: 0.8em;
+    display: block;
+    color: #808080;
+    font-size: 1.3vw;
+}
+
+/* Hover no botão de adicionar */
+.add-profile-btn:hover .icon-wrapper {
+    background-color: #e5e5e5; /* Fundo cinza claro */
+    color: #141414; /* Ícone fica preto */
+    transform: scale(1.02);
+}
+
+.add-profile-btn:hover span {
+    color: #fff;
+}
+
+/* ==========================================================================
+   8. Botão "Gerenciar Perfis" (Rodapé)
+   ========================================================================== */
+.profile-actions {
+    margin-top: 2em;
+}
+
+.manage-btn {
+    border: 1px solid #808080;
+    color: #808080;
+    text-transform: uppercase;
+    padding: 0.5em 1.5em;
+    font-size: 1.2vw;
+    min-font-size: 13px;
+    letter-spacing: 2px;
+    transition: border-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+.manage-btn:hover {
+    border-color: #fff;
+    color: #fff;
+}
