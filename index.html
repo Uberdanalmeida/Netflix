@@ -3,17 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Netflix - Quem está assistindo?</title>
 </head>
 <body>
-    <main>
-        <h1>Quem esta assistindo?</h1>
-        <div class="container">
-            <div class="profile">
-                <img src="/assets/perfil.jpg" alt="Perfil 1">
-                <p>Perfil 1</p>
-            </div>
-        </div>  
+
+    <header role="banner" class="top-navigation">
+        <img src="/assets/logo-netflix.png" alt="Logotipo da Netflix" class="logo">
+    </header>
+
+    <main class="profile-gate-container">
+        <section class="profile-selection">
+            <h1>Quem está assistindo?</h1>
+            
+            <nav aria-label="Seleção de perfis">
+                <ul class="profile-list">
+                    <li class="profile-item">
+                        <a href="/catalogo" class="profile-link">
+                            <figure class="profile-avatar">
+                                <img src="/assets/perfil-1.jpg" alt="Avatar de Uberdan">
+                                <figcaption>Uberdan</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li class="profile-item">
+                        <a href="/catalogo-kids" class="profile-link">
+                            <figure class="profile-avatar">
+                                <img src="/assets/perfil-infantil.jpg" alt="Avatar Infantil">
+                                <figcaption>Infantil</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li class="profile-item">
+                        <button class="add-profile-btn" aria-label="Adicionar novo perfil">
+                            <div class="icon-wrapper">
+                                <i class='bx bxs-plus-circle'></i>
+                            </div>
+                            <span>Adicionar Perfil</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <footer class="profile-actions">
+                <button type="button" class="manage-btn">Gerenciar Perfis</button>
+            </footer>
+        </section>
     </main>
+
 </body>
 </html>
