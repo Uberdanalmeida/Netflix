@@ -50,8 +50,10 @@ button {
 }
 
 .top-navigation .logo {
-    height: 30px; /* Tamanho controlado do logo sugerido */
+    height: 30px; /* Tamanho controlado do logo */
+    width: auto; /* Mantém a proporção */
     vertical-align: middle;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); /* Adiciona uma sombra sutil apenas atrás do texto */
 }
 
 /* ==========================================================================
