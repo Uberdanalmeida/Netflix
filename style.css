@@ -74,14 +74,6 @@ button {
     letter-spacing: 1px;
 }
 
-/* Media query para telas menores (mobile) */
-@media (max-width: 800px) {
-    .profile-selection h1 {
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-}
-
 /* ==========================================================================
    4. Lista de Perfis (A "Grid")
    ========================================================================== */
@@ -216,4 +208,62 @@ button {
 .manage-btn:hover {
     border-color: #fff;
     color: #fff;
+}
+
+/* ==========================================================================
+   9. Responsividade (Mobile e Tablets)
+   ========================================================================== */
+
+/* Para telas de Tablets e Celulares Grandes (até 800px) */
+@media (max-width: 800px) {
+    .profile-selection h1 {
+        font-size: 30px; /* Título menor para não ocupar a tela toda */
+        margin-bottom: 20px;
+    }
+
+    .profile-list {
+        gap: 15px; /* Diminui o espaço entre os perfis */
+    }
+
+    .profile-item {
+        width: 120px; /* Fixa um tamanho confortável para o toque */
+    }
+
+    .profile-avatar figcaption {
+        font-size: 14px; /* Texto legível no celular */
+    }
+
+    .manage-btn {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+}
+
+/* Para Celulares Pequenos (até 480px) */
+@media (max-width: 480px) {
+    .top-navigation {
+        height: 50px;
+        justify-content: center; /* Centraliza o logo no mobile */
+        padding: 0;
+    }
+
+    .top-navigation .logo {
+        height: 20px; /* Logo mais delicada */
+    }
+
+    .profile-selection h1 {
+        font-size: 24px;
+    }
+
+    .profile-list {
+        display: grid; /* Muda para Grid para organizar melhor em telas estreitas */
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas de perfis */
+        justify-items: center;
+        padding: 0 20px;
+    }
+
+    .profile-item {
+        width: 100%; /* Ocupa o espaço da coluna do grid */
+        max-width: 110px;
+    }
 }
