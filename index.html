@@ -1,58 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <title>Netflix - Quem está assistindo?</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header role="banner" class="top-navigation">
-        <img src="assets/logo-netflix.png" alt="Logotipo da Netflix" class="logo">
+      <img
+        src="assets/logo-netflix.png"
+        alt="Logotipo da Netflix"
+        class="logo"
+      />
     </header>
 
     <main class="profile-gate-container">
-        <section class="profile-selection">
-            <h1>Quem está assistindo?</h1>
-            
-            <nav aria-label="Seleção de perfis">
-                <ul class="profile-list">
-                    <li class="profile-item">
-                        <a href="/catalogo" class="profile-link">
-                            <figure class="profile-avatar">
-                                <img src="assets/perfil-1.png" alt="Avatar de Uberdan">
-                                <figcaption>Uberdan</figcaption>
-                            </figure>
-                        </a>
-                    </li>
+      <section class="profile-selection">
+        <h1>Quem está assistindo?</h1>
 
-                    <li class="profile-item">
-                        <a href="/catalogo-kids" class="profile-link">
-                            <figure class="profile-avatar">
-                                <img src="assets/perfil-infantil.png" alt="Avatar Infantil">
-                                <figcaption>Infantil</figcaption>
-                            </figure>
-                        </a>
-                    </li>
+        <nav aria-label="Seleção de perfis">
+          <ul class="profile-list">
+            <li class="profile-item">
+              <a href="/catalogo" class="profile-link">
+                <figure class="profile-avatar">
+                  <img src="assets/perfil-1.png" alt="Avatar de Uberdan" />
+                  <figcaption>Uberdan</figcaption>
+                </figure>
+              </a>
+            </li>
 
-                    <li class="profile-item">
-                        <button class="add-profile-btn" aria-label="Adicionar novo perfil">
-                            <div class="icon-wrapper">
-                                <i class='bx bxs-plus-circle'></i>
-                            </div>
-                            <span>Adicionar Perfil</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+            <li class="profile-item">
+              <a href="/catalogo-kids" class="profile-link">
+                <figure class="profile-avatar">
+                  <img src="assets/perfil-infantil.png" alt="Avatar Infantil" />
+                  <figcaption>Infantil</figcaption>
+                </figure>
+              </a>
+            </li>
 
-            <footer class="profile-actions">
-                <button type="button" class="manage-btn">Gerenciar Perfis</button>
-            </footer>
-        </section>
+            <li class="profile-item">
+              <button
+                class="add-profile-btn"
+                aria-label="Adicionar novo perfil"
+              >
+                <div class="icon-wrapper">
+                  <i class="bx bxs-plus-circle"></i>
+                </div>
+                <span>Adicionar Perfil</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <footer class="profile-actions">
+          <button type="button" class="manage-btn">Gerenciar Perfis</button>
+        </footer>
+      </section>
     </main>
 
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
