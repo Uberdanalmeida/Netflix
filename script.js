@@ -28,13 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(`Entrando como: ${nome}...`);
 
-        // Simula um tempo de carregamento de 1.5 segundos antes de ir para a próxima página
         setTimeout(() => {
-            // Aqui você redirecionaria para a página do catálogo
-            // Como ainda vamos criar a pagina, vou apenas avisar no console
-            alert(`Bem-vindo, ${nome}! Carregando seu catálogo personalizado...`);
-            
-            // window.location.href = url; // Descomente esta linha quando criar a página de filmes
-        }, 1500);
+    // Agora sim, redirecionamos para o catálogo!
+    window.location.href = "catalogo.html"; 
+}, 1500);
     }
 });
