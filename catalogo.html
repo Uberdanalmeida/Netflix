@@ -32,66 +32,21 @@
     </header>
 
     <main>
-      <section class="featured-banner">
-        <div class="featured-content">
-          <h1 class="featured-title">Stranger Things</h1>
-          <p class="featured-description">
-            Quando um garoto desaparece, uma cidade pequena descobre um mistério
-            envolvendo experimentos secretos, forças sobrenaturais
-            aterrorizantes e uma garotinha estranha.
-          </p>
-          <div class="featured-buttons">
-            <button class="btn-play">
-              <i class="bx bx-play"></i> Assistir
-            </button>
-            <button class="btn-info">
-              <i class="bx bx-info-circle"></i> Mais Informações
-            </button>
-          </div>
-        </div>
+      <section class="featured-banner"></section>
+
+      <section class="movie-row">
+        <h2>Filmes em Alta</h2>
+        <div id="trending-movies" class="movie-cards"></div>
       </section>
 
       <section class="movie-row">
-        <h2>Minha Lista</h2>
-        <div class="movie-cards">
-          <div class="card">
-            <img
-              src="https://via.placeholder.com/200x300?text=Filme+1"
-              alt="Capa"
-            />
-          </div>
-          <div class="card">
-            <img
-              src="https://via.placeholder.com/200x300?text=Filme+2"
-              alt="Capa"
-            />
-          </div>
-          <div class="card">
-            <img
-              src="https://via.placeholder.com/200x300?text=Filme+3"
-              alt="Capa"
-            />
-          </div>
-          <div class="card">
-            <img
-              src="https://via.placeholder.com/200x300?text=Filme+4"
-              alt="Capa"
-            />
-          </div>
-          <div class="card">
-            <img
-              src="https://via.placeholder.com/200x300?text=Filme+5"
-              alt="Capa"
-            />
-          </div>
-          <div class="card">
-            <img
-              src="https://via.placeholder.com/200x300?text=Filme+6"
-              alt="Capa"
-            />
-          </div>
-        </div>
+        <h2>Séries Populares</h2>
+        <div id="popular-series" class="movie-cards"></div>
       </section>
     </main>
+
+    <script src="api.js"></script>
+
+    <script src="script.js"></script>
   </body>
 </html>
