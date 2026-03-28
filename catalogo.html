@@ -43,15 +43,27 @@
       </section>
 
       <section class="movie-row">
-        <h2>Filmes em Alta</h2>
-        <div id="trending-movies" class="movie-cards">
-            </div>
-      </section>
+  <h2>Filmes em Alta</h2>
+  <div class="row-container">
+    <button class="handle handle-left" onclick="scrollRow('trending-movies', -1)"><i class="bx bx-chevron-left"></i></button>
+    
+    <div id="trending-movies" class="movie-cards">
+      </div>
+    
+    <button class="handle handle-right" onclick="scrollRow('trending-movies', 1)"><i class="bx bx-chevron-right"></i></button>
+  </div>
+</section>
 
       <section class="movie-row">
         <h2>Séries Originais Netflix</h2>
+        <div class="row-container">
+
+    <button class="handle handle-left" onclick="scrollRow('trending-movies', -1)"><i class="bx bx-chevron-left"></i></button>
+
         <div id="popular-series" class="movie-cards">
             </div>
+            <button class="handle handle-right" onclick="scrollRow('trending-movies', 1)"><i class="bx bx-chevron-right"></i></button>
+  </div>
       </section>
     </main>
 

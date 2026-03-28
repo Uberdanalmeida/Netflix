@@ -114,3 +114,14 @@ function trancarTexto(texto, maxChars) {
     if(!texto) return "";
     return texto.length > maxChars ? texto.substr(0, maxChars - 1) + '...' : texto;
 }
+
+function scrollRow(elementId, direction) {
+  const row = document.getElementById(elementId);
+  // Calcula quanto scrollar (largura de uns 3 cards)
+  const scrollAmount = row.clientWidth * 0.8; 
+  
+  row.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}

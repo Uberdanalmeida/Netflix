@@ -337,16 +337,6 @@ main {
     display: block;
 }
 
-/* Container que alinha os cards em linha */
-.movie-cards {
-    display: flex;
-    flex-direction: row; /* Força os cards lado a lado */
-    gap: 8px; /* Espaçamento pequeno entre cards */
-    overflow-x: auto; /* Permite scroll horizontal */
-    padding: 20px 0;
-    min-height: 250px; /* Dá altura para a fileira não sumir */
-}
-
 /* Esconde a barra de rolagem horizontal para um visual limpo */
 .movie-cards::-webkit-scrollbar {
   display: none;
@@ -382,6 +372,54 @@ main {
 
 .card img:hover {
   transform: scale(1.1);
+}
+
+/* Container que segura os cards e as setas */
+.row-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo das Setas (Handles) */
+.handle {
+  position: absolute;
+  height: 240px; /* Mesma altura do card */
+  width: 4%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  z-index: 30;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Invisível por padrão */
+  transition: opacity 0.3s, background 0.3s;
+}
+
+.handle-left { left: 0; border-radius: 0 4px 4px 0; }
+.handle-right { right: 0; border-radius: 4px 0 0 4px; }
+
+/* Mostrar setas ao passar o mouse na fileira */
+.row-container:hover .handle {
+  opacity: 1;
+}
+
+.handle:hover {
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 3.5rem;
+}
+
+/* Ajuste fino nos movie-cards para não "bater" na borda */
+.movie-cards {
+  scroll-behavior: smooth; /* Faz o scroll ser deslizado, não seco */
+  padding: 20px 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
 }
 
 /* ==========================================================================
