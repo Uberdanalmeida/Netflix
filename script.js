@@ -125,3 +125,15 @@ function scrollRow(elementId, direction) {
     behavior: 'smooth'
   });
 }
+
+// Efeito de Scroll na Navbar
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav-catalogo');
+    
+    // Se o scroll passar de 100px, adiciona a classe 'black', senão remove
+    if (window.scrollY > 100) {
+        nav.classList.add('black');
+    } else {
+        nav.classList.remove('black');
+    }
+});
