@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Netflix - Início</title>
   </head>
@@ -36,34 +39,55 @@
             Aguarde enquanto buscamos o melhor conteúdo para você.
           </p>
           <div class="featured-buttons">
-            <button class="btn-play"><i class="bx bx-play"></i> Assistir</button>
-            <button class="btn-info"><i class="bx bx-info-circle"></i> Mais Informações</button>
+            <button class="btn-play">
+              <i class="bx bx-play"></i> Assistir
+            </button>
+            <button class="btn-info">
+              <i class="bx bx-info-circle"></i> Mais Informações
+            </button>
           </div>
         </div>
       </section>
 
       <section class="movie-row">
-  <h2>Filmes em Alta</h2>
-  <div class="row-container">
-    <button class="handle handle-left" onclick="scrollRow('trending-movies', -1)"><i class="bx bx-chevron-left"></i></button>
-    
-    <div id="trending-movies" class="movie-cards">
-      </div>
-    
-    <button class="handle handle-right" onclick="scrollRow('trending-movies', 1)"><i class="bx bx-chevron-right"></i></button>
-  </div>
-</section>
+        <h2>Filmes em Alta</h2>
+        <div class="row-container">
+          <button
+            class="handle handle-left"
+            onclick="scrollRow('trending-movies', -1)"
+          >
+            <i class="bx bx-chevron-left"></i>
+          </button>
+
+          <div id="trending-movies" class="movie-cards"></div>
+
+          <button
+            class="handle handle-right"
+            onclick="scrollRow('trending-movies', 1)"
+          >
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </section>
 
       <section class="movie-row">
         <h2>Séries Originais Netflix</h2>
         <div class="row-container">
+          <button
+            class="handle handle-left"
+            onclick="scrollRow('popular-series', -1)"
+          >
+            <i class="bx bx-chevron-left"></i>
+          </button>
 
-    <button class="handle handle-left" onclick="scrollRow('trending-movies', -1)"><i class="bx bx-chevron-left"></i></button>
-
-        <div id="popular-series" class="movie-cards">
-            </div>
-            <button class="handle handle-right" onclick="scrollRow('trending-movies', 1)"><i class="bx bx-chevron-right"></i></button>
-  </div>
+          <div id="popular-series" class="movie-cards"></div>
+          <button
+            class="handle handle-right"
+            onclick="scrollRow('popular-series', 1)"
+          >
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
       </section>
     </main>
 

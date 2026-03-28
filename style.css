@@ -41,7 +41,11 @@ button {
 .top-navigation {
   height: 70px; /* Altura padrão da barra */
   width: 100%;
-  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 10%,rgba(0, 0, 0, 0)); /* Gradiente sutil no topo */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  ); /* Gradiente sutil no topo */
   display: flex;
   align-items: center;
   padding: 0 4%; /* Margem lateral responsiva */
@@ -111,8 +115,9 @@ button {
   position: relative;
   border: 0.3vw solid transparent; /* Borda invisível para evitar pulos no hover */
   border-radius: 4px;
-  transition: transform 0.2s ease-out,
-  border-color 0.2s ease-out; /* Animação suave */
+  transition:
+    transform 0.2s ease-out,
+    border-color 0.2s ease-out; /* Animação suave */
 }
 
 /* Imagem do Avatar */
@@ -169,8 +174,10 @@ button {
   font-size: 6vw; /* Ícone grande */
   max-font-size: 80px;
   border-radius: 4px;
-  transition: background-color 0.2s ease-out,
-  color 0.2s ease-out, transform 0.2s ease-out;
+  transition:
+    background-color 0.2s ease-out,
+    color 0.2s ease-out,
+    transform 0.2s ease-out;
 }
 
 /* Texto abaixo do ícone */
@@ -207,8 +214,9 @@ button {
   font-size: 1.2vw;
   min-font-size: 13px;
   letter-spacing: 2px;
-  transition: border-color 0.2s ease-out,
-  color 0.2s ease-out;
+  transition:
+    border-color 0.2s ease-out,
+    color 0.2s ease-out;
 }
 
 .manage-btn:hover {
@@ -236,9 +244,9 @@ button {
 }
 
 .nav-catalogo .logo {
-    height: 35px !important; /* Define um tamanho fixo e pequeno */
-    width: auto;
-    object-fit: contain;
+  height: 35px !important; /* Define um tamanho fixo e pequeno */
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-left,
@@ -261,38 +269,38 @@ button {
 
 /* Banner Principal */
 .featured-banner {
-    min-height: 85vh; /* Quase a tela cheia */
-    display: flex;
-    align-items: center;
-    padding-top: 70px; /* Espaço para a navbar */
-    margin-bottom: 20px;
-    background-size: cover;
-    background-position: center center;
+  min-height: 85vh; /* Quase a tela cheia */
+  display: flex;
+  align-items: center;
+  padding-top: 70px; /* Espaço para a navbar */
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: center center;
 }
 
 .featured-content {
-    padding-left: 4%;
-    max-width: 500px; /* Largura máxima do bloco de texto */
-    z-index: 2;
+  padding-left: 4%;
+  max-width: 500px; /* Largura máxima do bloco de texto */
+  z-index: 2;
 }
 
 .featured-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto */
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto */
 }
 
 .featured-description {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    line-height: 1.4;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .featured-buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .btn-play {
@@ -317,24 +325,24 @@ button {
 /* Fileira de Filmes */
 /* Garante que o conteúdo comece abaixo da Navbar fixa */
 main {
-    padding-top: 70px; 
+  padding-top: 70px;
 }
 
 /* No seu style.css */
 
 /* Fileira de Filmes - Container Principal */
 .movie-row {
-    margin: 40px 0;
-    padding: 0 4%;
-    position: relative;
-    z-index: 10;
+  margin: 40px 0;
+  padding: 0 4%;
+  position: relative;
+  z-index: 10;
 }
 
 .movie-row h2 {
-    font-size: 1.6rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-    display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
 }
 
 /* Esconde a barra de rolagem horizontal para um visual limpo */
@@ -344,30 +352,30 @@ main {
 
 /* O CARD INDIVIDUAL (O segredo está aqui) */
 .card {
-    /* Define largura e altura VERTICAIS fixas */
-    min-width: 160px; /* Largura menor e mais parecida com Netflix */
-    height: 240px; /* Proporção ~2:3 (vertical) */
-    flex-shrink: 0; /* Impede que o flexbox "esmague" o card */
-    position: relative;
-    transition: transform 0.3s ease-out; /* Prepara a animação */
-    cursor: pointer;
-    border-radius: 4px;
-    overflow: hidden; /* Garante que o zoom da imagem não saia do card */
+  /* Define largura e altura VERTICAIS fixas */
+  min-width: 160px; /* Largura menor e mais parecida com Netflix */
+  height: 240px; /* Proporção ~2:3 (vertical) */
+  flex-shrink: 0; /* Impede que o flexbox "esmague" o card */
+  position: relative;
+  transition: transform 0.3s ease-out; /* Prepara a animação */
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden; /* Garante que o zoom da imagem não saia do card */
 }
 
 /* EFEITO DE HOVER NO CARD INTEIRO */
 .card:hover {
-    transform: scale(1.1); /* Zoom suave no card */
-    z-index: 20; /* Garante que o card com zoom fique por cima dos outros */
+  transform: scale(1.1); /* Zoom suave no card */
+  z-index: 20; /* Garante que o card com zoom fique por cima dos outros */
 }
 
 /* A IMAGEM DENTRO DO CARD */
 .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ESSENCIAL: Faz a imagem horizontal preencher o espaço vertical cortando as bordas, sem distorcer */
-    border-radius: 4px;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ESSENCIAL: Faz a imagem horizontal preencher o espaço vertical cortando as bordas, sem distorcer */
+  border-radius: 4px;
+  display: block;
 }
 
 .card img:hover {
@@ -396,11 +404,19 @@ main {
   align-items: center;
   justify-content: center;
   opacity: 0; /* Invisível por padrão */
-  transition: opacity 0.3s, background 0.3s;
+  transition:
+    opacity 0.3s,
+    background 0.3s;
 }
 
-.handle-left { left: 0; border-radius: 0 4px 4px 0; }
-.handle-right { right: 0; border-radius: 4px 0 0 4px; }
+.handle-left {
+  left: 0;
+  border-radius: 0 4px 4px 0;
+}
+.handle-right {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
 
 /* Mostrar setas ao passar o mouse na fileira */
 .row-container:hover .handle {
