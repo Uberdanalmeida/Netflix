@@ -255,24 +255,44 @@ button {
 
 /* Banner Principal */
 .featured-banner {
+    min-height: 80vh; /* Ocupa 80% da altura da tela */
     margin-top: 0;
-    padding-top: 70px; /* Espaço para a navbar não cobrir o banner */
-    min-height: 70vh;
-    background-color: #141414;
+    padding-top: 70px; /* Espaço para a navbar fixa */
+    background-color: #141414; /* Cor de fundo caso a imagem falhe */
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    /* GRADIENTE: Cria a sombra escura do topo e da esquerda para dar leitura ao texto */
+    background-image: linear-gradient(to right, #141414 10%, rgba(20, 20, 20, 0) 50%),
+                      linear-gradient(to bottom, rgba(20, 20, 20, 0.5) 0%, rgba(20, 20, 20, 0) 20%);
 }
 
 .featured-content {
-  max-width: 500px;
+    padding-left: 4%;
+    max-width: 500px; /* Largura máxima do bloco de texto */
+    z-index: 2;
 }
 
 .featured-title {
-  font-size: 3rem;
-  margin-bottom: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto */
 }
+
 .featured-description {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.4;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.featured-buttons {
+    display: flex;
+    gap: 10px;
 }
 
 .btn-play {
@@ -300,6 +320,9 @@ main {
     padding-top: 70px; 
 }
 
+/* No seu style.css */
+
+/* Fileira de Filmes - Container Principal */
 .movie-row {
     margin: 40px 0;
     padding: 0 4%;
@@ -308,38 +331,53 @@ main {
 }
 
 .movie-row h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
     margin-bottom: 10px;
-    display: block; /* Garante que o título ocupe sua própria linha */
+    display: block;
 }
 
-/* Garante que o container de cards tenha altura e os itens apareçam lado a lado */
+/* Container que alinha os cards em linha */
 .movie-cards {
     display: flex;
-    flex-direction: row; /* Alinha os filmes em linha */
-    gap: 10px;
+    flex-direction: row; /* Força os cards lado a lado */
+    gap: 8px; /* Espaçamento pequeno entre cards */
     overflow-x: auto; /* Permite scroll horizontal */
     padding: 20px 0;
-    min-height: 300px; /* Dá altura para a fileira não sumir */
+    min-height: 250px; /* Dá altura para a fileira não sumir */
 }
 
+/* Esconde a barra de rolagem horizontal para um visual limpo */
 .movie-cards::-webkit-scrollbar {
   display: none;
-} /* Esconde a barra de scroll */
-
-.card {
-    min-width: 200px;
-    height: 300px;
-    flex-shrink: 0; /* Impede que o card seja esmagado */
 }
 
+/* O CARD INDIVIDUAL (O segredo está aqui) */
+.card {
+    /* Define largura e altura VERTICAIS fixas */
+    min-width: 160px; /* Largura menor e mais parecida com Netflix */
+    height: 240px; /* Proporção ~2:3 (vertical) */
+    flex-shrink: 0; /* Impede que o flexbox "esmague" o card */
+    position: relative;
+    transition: transform 0.3s ease-out; /* Prepara a animação */
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden; /* Garante que o zoom da imagem não saia do card */
+}
+
+/* EFEITO DE HOVER NO CARD INTEIRO */
+.card:hover {
+    transform: scale(1.1); /* Zoom suave no card */
+    z-index: 20; /* Garante que o card com zoom fique por cima dos outros */
+}
+
+/* A IMAGEM DENTRO DO CARD */
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* ESSENCIAL: Faz a imagem horizontal preencher o espaço vertical cortando as bordas, sem distorcer */
     border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.3s;
+    display: block;
 }
 
 .card img:hover {

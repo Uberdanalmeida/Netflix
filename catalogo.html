@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Netflix - Início</title>
   </head>
@@ -32,21 +29,33 @@
     </header>
 
     <main>
-      <section class="featured-banner"></section>
-
-      <section class="movie-row">
-        <h2>Filmes em Alta</h2>
-        <div id="trending-movies" class="movie-cards"></div>
+      <section class="featured-banner">
+        <div class="featured-content">
+          <h1 id="banner-title" class="featured-title">Carregando...</h1>
+          <p id="banner-description" class="featured-description">
+            Aguarde enquanto buscamos o melhor conteúdo para você.
+          </p>
+          <div class="featured-buttons">
+            <button class="btn-play"><i class="bx bx-play"></i> Assistir</button>
+            <button class="btn-info"><i class="bx bx-info-circle"></i> Mais Informações</button>
+          </div>
+        </div>
       </section>
 
       <section class="movie-row">
-        <h2>Séries Populares</h2>
-        <div id="popular-series" class="movie-cards"></div>
+        <h2>Filmes em Alta</h2>
+        <div id="trending-movies" class="movie-cards">
+            </div>
+      </section>
+
+      <section class="movie-row">
+        <h2>Séries Originais Netflix</h2>
+        <div id="popular-series" class="movie-cards">
+            </div>
       </section>
     </main>
 
     <script src="api.js"></script>
-
     <script src="script.js"></script>
   </body>
 </html>
