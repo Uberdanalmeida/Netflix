@@ -105,7 +105,7 @@ async function getMovies(url, elementId) {
       displayContainer.appendChild(card);
 
       // Dentro do data.results.forEach no seu getMovies:
-      card.addEventListener('click', () => abrirModal(movie));
+      card.addEventListener("click", () => abrirModal(movie));
     });
 
     console.log(`Sucesso: ${elementId} carregado.`);
@@ -144,111 +144,116 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
 function abrirModal(movie) {
-    const modal = document.getElementById('movie-modal');
-    
-    // Limpa o vídeo da abertura anterior para não misturar som
-    const videoContainer = document.getElementById('modal-video-container');
-    videoContainer.innerHTML = "";
-    videoContainer.style.display = "none";
-    document.getElementById('modal-banner').style.display = "block";
+  const modal = document.getElementById("movie-modal");
 
-    // Preenche os textos (como você já fazia)
-    document.getElementById('modal-title').innerText = movie.title || movie.name;
-    document.getElementById('modal-overview').innerText = movie.overview || "Sinopse não disponível.";
-    
-    const imgUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "";
-    document.getElementById('modal-banner').style.backgroundImage = `url('${imgUrl}')`;
+  // Limpa o vídeo da abertura anterior para não misturar som
+  const videoContainer = document.getElementById("modal-video-container");
+  videoContainer.innerHTML = "";
+  videoContainer.style.display = "none";
+  document.getElementById("modal-banner").style.display = "block";
 
-    // --- NOVA LINHA: Chama a busca do trailer ---
-    const tipo = movie.first_air_date ? 'tv' : 'movie';
-    buscarTrailer(movie.id, tipo);
+  // Preenche os textos (como você já fazia)
+  document.getElementById("modal-title").innerText = movie.title || movie.name;
+  document.getElementById("modal-overview").innerText =
+    movie.overview || "Sinopse não disponível.";
 
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden";
+  const imgUrl = movie.backdrop_path
+    ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+    : "";
+  document.getElementById("modal-banner").style.backgroundImage =
+    `url('${imgUrl}')`;
+
+  // --- NOVA LINHA: Chama a busca do trailer ---
+  const tipo = movie.first_air_date ? "tv" : "movie";
+  buscarTrailer(movie.id, tipo);
+
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
 // Lógica para fechar o modal
-document.querySelector('.close-modal').addEventListener('click', () => {
-  document.getElementById('movie-modal').style.display = "none";
+document.querySelector(".close-modal").addEventListener("click", () => {
+  document.getElementById("movie-modal").style.display = "none";
   document.body.style.overflow = "auto";
-  document.getElementById('modal-video-container').innerHTML = "";
+  document.getElementById("modal-video-container").innerHTML = "";
 });
 
 // Fechar se clicar fora do conteúdo
 window.onclick = (event) => {
-  const modal = document.getElementById('movie-modal');
+  const modal = document.getElementById("movie-modal");
   if (event.target == modal) {
     modal.style.display = "none";
     document.body.style.overflow = "auto";
-    document.getElementById('modal-video-container').innerHTML = "";
+    document.getElementById("modal-video-container").innerHTML = "";
   }
 };
 
 async function buscarTrailer(movieId, type) {
-    const videoContainer = document.getElementById('modal-video-container');
-    const banner = document.getElementById('modal-banner');
-    
-    // O 'type' ajuda a diferenciar se é 'movie' ou 'tv' (importante para a API)
-    const category = type === 'tv' ? 'tv' : 'movie';
-    const url = `${BASE_URL}/${category}/${movieId}/videos?api_key=${API_KEY}&language=pt-BR`;
+  const videoContainer = document.getElementById("modal-video-container");
+  const banner = document.getElementById("modal-banner");
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        // Procuramos por um vídeo que seja do YouTube e do tipo 'Trailer'
-        const trailer = data.results.find(v => v.site === 'YouTube' && v.type === 'Trailer');
+  // O 'type' ajuda a diferenciar se é 'movie' ou 'tv' (importante para a API)
+  const category = type === "tv" ? "tv" : "movie";
+  const url = `${BASE_URL}/${category}/${movieId}/videos?api_key=${API_KEY}&language=pt-BR`;
 
-        if (trailer) {
-            videoContainer.style.display = "block";
-            banner.style.display = "none"; // ESCONDE O BANNER SE TIVER VÍDEO
-            banner.classList.add('hidden'); // Esconde a imagem estática
-            // Dentro da função buscarTrailer, onde você define o innerHTML:
-videoContainer.innerHTML = `
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Procuramos por um vídeo que seja do YouTube e do tipo 'Trailer'
+    const trailer = data.results.find(
+      (v) => v.site === "YouTube" && v.type === "Trailer",
+    );
+
+    if (trailer) {
+      videoContainer.style.display = "block";
+      banner.style.display = "none"; // ESCONDE O BANNER SE TIVER VÍDEO
+      banner.classList.add("hidden"); // Esconde a imagem estática
+      // Dentro da função buscarTrailer, onde você define o innerHTML:
+      videoContainer.innerHTML = `
     <iframe 
         src="https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&enablejsapi=1&origin=${window.location.origin}" 
         allow="autoplay; encrypted-media" 
         allowfullscreen>
     </iframe>`;
-        } else {
-            videoContainer.style.display = "none";
-            banner.style.display = "block"; // MOSTRA O BANNER SE NÃO TIVER VÍDEO
-            banner.classList.remove('hidden');
-        }
-    } catch (error) {
-        console.error("Erro ao buscar trailer:", error);
+    } else {
+      videoContainer.style.display = "none";
+      banner.style.display = "block"; // MOSTRA O BANNER SE NÃO TIVER VÍDEO
+      banner.classList.remove("hidden");
     }
+  } catch (error) {
+    console.error("Erro ao buscar trailer:", error);
+  }
 }
 
 // --- LÓGICA DE BUSCA ---
-const searchIcon = document.getElementById('search-icon');
-const searchInput = document.getElementById('search-input');
-const searchBox = document.querySelector('.search-box');
+const searchIcon = document.getElementById("search-icon");
+const searchInput = document.getElementById("search-input");
+const searchBox = document.querySelector(".search-box");
 
 // Abre/Fecha a barra ao clicar na lupa
-searchIcon.addEventListener('click', () => {
-    searchBox.classList.toggle('active');
-    if (searchBox.classList.contains('active')) {
-        searchInput.focus();
-    }
+searchIcon.addEventListener("click", () => {
+  searchBox.classList.toggle("active");
+  if (searchBox.classList.contains("active")) {
+    searchInput.focus();
+  }
 });
 
 // Realiza a busca ao digitar
-searchInput.addEventListener('keyup', (e) => {
-    const query = e.target.value;
-    
-    if (query.length > 2) {
-        // Mudamos o título da primeira fileira para "Resultados"
-        document.querySelector('.movie-row h2').innerText = "Resultados da busca";
-        
-        // URL de busca do TMDB
-        const searchUrl = `${BASE_URL}/search/multi?api_key=${API_KEY}&language=pt-BR&query=${query}`;
-        getMovies(searchUrl, 'trending-movies');
-    } else if (query.length === 0) {
-        // Se apagar tudo, volta ao normal
-        document.querySelector('.movie-row h2').innerText = "Filmes em Alta";
-        getMovies(requests.trending, 'trending-movies');
-    }
+searchInput.addEventListener("keyup", (e) => {
+  const query = e.target.value;
+
+  if (query.length > 2) {
+    // Mudamos o título da primeira fileira para "Resultados"
+    document.querySelector(".movie-row h2").innerText = "Resultados da busca";
+
+    // URL de busca do TMDB
+    const searchUrl = `${BASE_URL}/search/multi?api_key=${API_KEY}&language=pt-BR&query=${query}`;
+    getMovies(searchUrl, "trending-movies");
+  } else if (query.length === 0) {
+    // Se apagar tudo, volta ao normal
+    document.querySelector(".movie-row h2").innerText = "Filmes em Alta";
+    getMovies(requests.trending, "trending-movies");
+  }
 });

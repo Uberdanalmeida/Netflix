@@ -25,13 +25,17 @@
         </nav>
       </div>
       <div class="nav-right">
-  <div class="search-box">
-    <input type="text" id="search-input" placeholder="Títulos, gente, gêneros" />
-    <i class="bx bx-search" id="search-icon"></i>
-  </div>
-  <span>Uberdan</span>
-  <img src="assets/perfil-1.png" alt="Perfil" class="nav-avatar" />
-</div>
+        <div class="search-box">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Títulos, gente, gêneros"
+          />
+          <i class="bx bx-search" id="search-icon"></i>
+        </div>
+        <span>Uberdan</span>
+        <img src="assets/perfil-1.png" alt="Perfil" class="nav-avatar" />
+      </div>
     </header>
 
     <main>
@@ -95,24 +99,28 @@
     </main>
 
     <div id="movie-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <div id="modal-video-container" class="modal-video"></div>
-    <div id="modal-banner" class="modal-header-img"></div>
-    <div class="modal-info">
-      <h2 id="modal-title">Título do Filme</h2>
-      <div class="modal-metadata">
-        <span id="modal-average" class="average">90% relevante</span>
-        <span id="modal-year">2024</span>
-      </div>
-      <p id="modal-overview">Sinopse do filme aqui...</p>
-      <div class="modal-actions">
-        <button class="btn-play"><i class="bx bx-play"></i> Assistir</button>
-        <button class="btn-add"><i class="bx bx-plus"></i> Minha Lista</button>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modal-video-container" class="modal-video"></div>
+        <div id="modal-banner" class="modal-header-img"></div>
+        <div class="modal-info">
+          <h2 id="modal-title">Título do Filme</h2>
+          <div class="modal-metadata">
+            <span id="modal-average" class="average">90% relevante</span>
+            <span id="modal-year">2024</span>
+          </div>
+          <p id="modal-overview">Sinopse do filme aqui...</p>
+          <div class="modal-actions">
+            <button class="btn-play">
+              <i class="bx bx-play"></i> Assistir
+            </button>
+            <button class="btn-add">
+              <i class="bx bx-plus"></i> Minha Lista
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
     <script src="api.js"></script>
     <script src="script.js"></script>
