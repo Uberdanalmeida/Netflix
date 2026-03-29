@@ -103,6 +103,9 @@ async function getMovies(url, elementId) {
 
       card.innerHTML = `<img src="${imagePath}" alt="${movie.title || movie.name}" title="${movie.title || movie.name}">`;
       displayContainer.appendChild(card);
+
+      // Dentro do data.results.forEach no seu getMovies:
+      card.addEventListener('click', () => abrirModal(movie));
     });
 
     console.log(`Sucesso: ${elementId} carregado.`);
@@ -140,3 +143,42 @@ window.addEventListener("scroll", () => {
     nav.classList.remove("black");
   }
 });
+
+
+function abrirModal(movie) {
+  const modal = document.getElementById('movie-modal');
+  const title = document.getElementById('modal-title');
+  const overview = document.getElementById('modal-overview');
+  const banner = document.getElementById('modal-banner');
+  const average = document.getElementById('modal-average');
+  const year = document.getElementById('modal-year');
+
+  // Preenche os dados
+  title.innerText = movie.title || movie.name;
+  overview.innerText = movie.overview || "Sinopse não disponível.";
+  average.innerText = `${(movie.vote_average * 10).toFixed(0)}% relevante`;
+  year.innerText = (movie.release_date || movie.first_air_date || "").substring(0, 4);
+
+  // Imagem de fundo (usamos o backdrop_path para ser horizontal)
+  const imgUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "";
+  banner.style.backgroundImage = `url('${imgUrl}')`;
+
+  // Mostra o modal
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden"; // Trava o scroll do fundo
+}
+
+// Lógica para fechar o modal
+document.querySelector('.close-modal').addEventListener('click', () => {
+  document.getElementById('movie-modal').style.display = "none";
+  document.body.style.overflow = "auto";
+});
+
+// Fechar se clicar fora do conteúdo
+window.onclick = (event) => {
+  const modal = document.getElementById('movie-modal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+};
