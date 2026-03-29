@@ -15,36 +15,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // --- FUNÇÕES DA TELA DE PERFIS ---
 function configurarSelecaoPerfis(container) {
-  const profileLinks = document.querySelectorAll(".profile-link");
+    const profileLinks = document.querySelectorAll(".profile-link");
+    const btnAdicionar = document.getElementById("btn-adicionar-perfil");
 
-  profileLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      // Efeito de saída
-      container.style.transition = "opacity 0.5s ease";
-      container.style.opacity = "0";
-
-      // Criar Loader simples
-      const loader = document.createElement("div");
-      loader.className = "netflix-loader";
-      document.body.appendChild(loader);
-
-      setTimeout(() => {
-        window.location.href = "catalogo.html";
-      }, 1000);
+    // Lógica para perfis existentes
+    profileLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const nomeValue = link.querySelector("figcaption").innerText;
+            const imgPath = link.querySelector("img").src;
+            
+            // Salva e Redireciona
+            localStorage.setItem("perfilNome", nomeValue);
+            localStorage.setItem("perfilImg", imgPath);
+            window.location.href = "catalogo.html";
+        });
     });
-  });
+
+    // Lógica para ADICIONAR (Corrigida para seu HTML)
+    if (btnAdicionar) {
+        btnAdicionar.onclick = () => {
+            const novoNome = prompt("Digite o nome do novo perfil:");
+            
+            if (novoNome && novoNome.trim() !== "") {
+                // 1. Seleciona a lista correta (profile-list)
+                const listaPerfis = document.querySelector(".profile-list");
+                
+                // 2. Cria o novo item li
+                const novoItem = document.createElement("li");
+                novoItem.className = "profile-item";
+                
+                // 3. Monta o HTML com a tag <figure> e <figcaption> igual aos outros
+                novoItem.innerHTML = `
+                    <a href="#" class="profile-link">
+                        <figure class="profile-avatar">
+                            <img src="assets/perfil-1.png" alt="Avatar de ${novoNome}" />
+                            <figcaption>${novoNome}</figcaption>
+                        </figure>
+                    </a>
+                `;
+                
+                // 4. Insere na tela antes do botão de adicionar
+                listaPerfis.insertBefore(novoItem, btnAdicionar);
+                
+                // 5. Faz o novo perfil funcionar ao ser clicado
+                const novoLink = novoItem.querySelector(".profile-link");
+                vincularClickPerfil(novoLink);
+            }
+        };
+    }
+}
+
+// Função para garantir que novos perfis também redirecionem
+function vincularClickPerfil(link) {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const nome = link.querySelector("figcaption").innerText;
+        const img = link.querySelector("img").src;
+        
+        localStorage.setItem("perfilNome", nome);
+        localStorage.setItem("perfilImg", img);
+        
+        window.location.href = "catalogo.html";
+    });
 }
 
 // --- FUNÇÕES DO CATÁLOGO (API TMDB) ---
 async function iniciarCatalogo() {
-  console.log("Iniciando carregamento do catálogo...");
+    // 1. Recupera os dados salvos
+    const nomeLogado = localStorage.getItem("perfilNome");
+    const imgLogada = localStorage.getItem("perfilImg");
 
-  // Chamamos o banner e as fileiras de forma independente
-  // Se o banner der erro, ele não impede os filmes de aparecerem
-  carregarBannerDinamico(requests.trending);
-  getMovies(requests.trending, "trending-movies");
-  getMovies(requests.originals, "popular-series");
+    // 2. Troca os dados do Uberdan pelos do perfil escolhido
+    if (nomeLogado) {
+        const navNome = document.querySelector(".nav-right span");
+        const navImg = document.querySelector(".nav-avatar");
+        if (navNome) navNome.innerText = nomeLogado;
+        if (navImg && imgLogada) navImg.src = imgLogada;
+    }
+
+    console.log("Iniciando busca de filmes na API...");
+    carregarBannerDinamico(requests.trending);
+    getMovies(requests.trending, 'trending-movies');
+    getMovies(requests.originals, 'popular-series');
 }
 
 async function carregarBannerDinamico(url) {
