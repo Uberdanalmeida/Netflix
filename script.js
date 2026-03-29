@@ -146,32 +146,34 @@ window.addEventListener("scroll", () => {
 
 
 function abrirModal(movie) {
-  const modal = document.getElementById('movie-modal');
-  const title = document.getElementById('modal-title');
-  const overview = document.getElementById('modal-overview');
-  const banner = document.getElementById('modal-banner');
-  const average = document.getElementById('modal-average');
-  const year = document.getElementById('modal-year');
+    const modal = document.getElementById('movie-modal');
+    
+    // Limpa o vídeo da abertura anterior para não misturar som
+    const videoContainer = document.getElementById('modal-video-container');
+    videoContainer.innerHTML = "";
+    videoContainer.style.display = "none";
+    document.getElementById('modal-banner').style.display = "block";
 
-  // Preenche os dados
-  title.innerText = movie.title || movie.name;
-  overview.innerText = movie.overview || "Sinopse não disponível.";
-  average.innerText = `${(movie.vote_average * 10).toFixed(0)}% relevante`;
-  year.innerText = (movie.release_date || movie.first_air_date || "").substring(0, 4);
+    // Preenche os textos (como você já fazia)
+    document.getElementById('modal-title').innerText = movie.title || movie.name;
+    document.getElementById('modal-overview').innerText = movie.overview || "Sinopse não disponível.";
+    
+    const imgUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "";
+    document.getElementById('modal-banner').style.backgroundImage = `url('${imgUrl}')`;
 
-  // Imagem de fundo (usamos o backdrop_path para ser horizontal)
-  const imgUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "";
-  banner.style.backgroundImage = `url('${imgUrl}')`;
+    // --- NOVA LINHA: Chama a busca do trailer ---
+    const tipo = movie.first_air_date ? 'tv' : 'movie';
+    buscarTrailer(movie.id, tipo);
 
-  // Mostra o modal
-  modal.style.display = "block";
-  document.body.style.overflow = "hidden"; // Trava o scroll do fundo
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 // Lógica para fechar o modal
 document.querySelector('.close-modal').addEventListener('click', () => {
   document.getElementById('movie-modal').style.display = "none";
   document.body.style.overflow = "auto";
+  document.getElementById('modal-video-container').innerHTML = "";
 });
 
 // Fechar se clicar fora do conteúdo
@@ -180,5 +182,42 @@ window.onclick = (event) => {
   if (event.target == modal) {
     modal.style.display = "none";
     document.body.style.overflow = "auto";
+    document.getElementById('modal-video-container').innerHTML = "";
   }
 };
+
+async function buscarTrailer(movieId, type) {
+    const videoContainer = document.getElementById('modal-video-container');
+    const banner = document.getElementById('modal-banner');
+    
+    // O 'type' ajuda a diferenciar se é 'movie' ou 'tv' (importante para a API)
+    const category = type === 'tv' ? 'tv' : 'movie';
+    const url = `${BASE_URL}/${category}/${movieId}/videos?api_key=${API_KEY}&language=pt-BR`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        // Procuramos por um vídeo que seja do YouTube e do tipo 'Trailer'
+        const trailer = data.results.find(v => v.site === 'YouTube' && v.type === 'Trailer');
+
+        if (trailer) {
+            videoContainer.style.display = "block";
+            banner.style.display = "none"; // ESCONDE O BANNER SE TIVER VÍDEO
+            banner.classList.add('hidden'); // Esconde a imagem estática
+            // Dentro da função buscarTrailer, onde você define o innerHTML:
+videoContainer.innerHTML = `
+    <iframe 
+        src="https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&enablejsapi=1&origin=${window.location.origin}" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>`;
+        } else {
+            videoContainer.style.display = "none";
+            banner.style.display = "block"; // MOSTRA O BANNER SE NÃO TIVER VÍDEO
+            banner.classList.remove('hidden');
+        }
+    } catch (error) {
+        console.error("Erro ao buscar trailer:", error);
+    }
+}
