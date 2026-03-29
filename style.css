@@ -267,6 +267,37 @@ button {
   border-radius: 4px;
 }
 
+.search-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 5px;
+}
+
+.search-box input {
+  width: 0; /* Começa fechada */
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #fff;
+  color: white;
+  outline: none;
+  transition: width 0.3s ease;
+  opacity: 0;
+}
+
+/* Quando a classe 'active' for adicionada pelo JS */
+.search-box.active input {
+  width: 200px;
+  opacity: 1;
+  margin-right: 10px;
+}
+
+#search-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
 /* Banner Principal */
 .featured-banner {
   min-height: 85vh; /* Quase a tela cheia */

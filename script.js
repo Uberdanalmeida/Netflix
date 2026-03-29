@@ -221,3 +221,34 @@ videoContainer.innerHTML = `
         console.error("Erro ao buscar trailer:", error);
     }
 }
+
+// --- LÓGICA DE BUSCA ---
+const searchIcon = document.getElementById('search-icon');
+const searchInput = document.getElementById('search-input');
+const searchBox = document.querySelector('.search-box');
+
+// Abre/Fecha a barra ao clicar na lupa
+searchIcon.addEventListener('click', () => {
+    searchBox.classList.toggle('active');
+    if (searchBox.classList.contains('active')) {
+        searchInput.focus();
+    }
+});
+
+// Realiza a busca ao digitar
+searchInput.addEventListener('keyup', (e) => {
+    const query = e.target.value;
+    
+    if (query.length > 2) {
+        // Mudamos o título da primeira fileira para "Resultados"
+        document.querySelector('.movie-row h2').innerText = "Resultados da busca";
+        
+        // URL de busca do TMDB
+        const searchUrl = `${BASE_URL}/search/multi?api_key=${API_KEY}&language=pt-BR&query=${query}`;
+        getMovies(searchUrl, 'trending-movies');
+    } else if (query.length === 0) {
+        // Se apagar tudo, volta ao normal
+        document.querySelector('.movie-row h2').innerText = "Filmes em Alta";
+        getMovies(requests.trending, 'trending-movies');
+    }
+});
