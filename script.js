@@ -98,6 +98,17 @@ async function iniciarCatalogo() {
     carregarBannerDinamico(requests.trending);
     getMovies(requests.trending, 'trending-movies');
     getMovies(requests.originals, 'popular-series');
+
+    // --- TROCA DE PERFIL RÁPIDA ---
+const profileTrigger = document.getElementById("profile-menu-trigger");
+
+if (profileTrigger) {
+    profileTrigger.addEventListener("click", () => {
+        // Opcional: Você pode apenas redirecionar sem apagar o localStorage
+        // Assim, o sistema "lembra" quem foi o último, mas deixa trocar.
+        window.location.href = "index.html";
+    });
+}
 }
 
 async function carregarBannerDinamico(url) {
