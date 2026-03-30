@@ -34,36 +34,36 @@ function configurarSelecaoPerfis(container) {
 
     // Lógica para ADICIONAR (Corrigida para seu HTML)
     if (btnAdicionar) {
-        btnAdicionar.onclick = () => {
-            const novoNome = prompt("Digite o nome do novo perfil:");
+    btnAdicionar.onclick = () => {
+        const novoNome = prompt("Digite o nome do novo perfil:");
+        
+        if (novoNome && novoNome.trim() !== "") {
+            const listaPerfis = document.querySelector(".profile-list");
             
-            if (novoNome && novoNome.trim() !== "") {
-                // 1. Seleciona a lista correta (profile-list)
-                const listaPerfis = document.querySelector(".profile-list");
-                
-                // 2. Cria o novo item li
-                const novoItem = document.createElement("li");
-                novoItem.className = "profile-item";
-                
-                // 3. Monta o HTML com a tag <figure> e <figcaption> igual aos outros
-                novoItem.innerHTML = `
-                    <a href="#" class="profile-link">
-                        <figure class="profile-avatar">
-                            <img src="assets/perfil-1.png" alt="Avatar de ${novoNome}" />
-                            <figcaption>${novoNome}</figcaption>
-                        </figure>
-                    </a>
-                `;
-                
-                // 4. Insere na tela antes do botão de adicionar
-                listaPerfis.insertBefore(novoItem, btnAdicionar);
-                
-                // 5. Faz o novo perfil funcionar ao ser clicado
-                const novoLink = novoItem.querySelector(".profile-link");
-                vincularClickPerfil(novoLink);
-            }
-        };
-    }
+            const novoItem = document.createElement("li");
+            novoItem.className = "profile-item";
+            
+            // --- O SEGREDO ESTÁ AQUI ---
+            // Usamos a API DiceBear para gerar uma imagem baseada no nome
+            // Isso cria uma imagem única para Maria, Fulano, etc.
+            const avatarNeutroUrl = `https://api.dicebear.com/8.x/identicon/svg?seed=${novoNome}`;
+            
+            novoItem.innerHTML = `
+                <a href="#" class="profile-link">
+                    <figure class="profile-avatar">
+                        <img src="${avatarNeutroUrl}" alt="Avatar de ${novoNome}" />
+                        <figcaption>${novoNome}</figcaption>
+                    </figure>
+                </a>
+            `;
+            
+            listaPerfis.insertBefore(novoItem, btnAdicionar);
+            
+            const novoLink = novoItem.querySelector(".profile-link");
+            vincularClickPerfil(novoLink); 
+        }
+    };
+}
 }
 
 // Função para garantir que novos perfis também redirecionem
