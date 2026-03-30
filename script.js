@@ -82,33 +82,38 @@ function vincularClickPerfil(link) {
 
 // --- FUNÇÕES DO CATÁLOGO (API TMDB) ---
 async function iniciarCatalogo() {
-    // 1. Recupera os dados salvos
+    // 1. Recupera os dados salvos no localStorage
     const nomeLogado = localStorage.getItem("perfilNome");
     const imgLogada = localStorage.getItem("perfilImg");
 
-    // 2. Troca os dados do Uberdan pelos do perfil escolhido
-    if (nomeLogado) {
-        const navNome = document.querySelector(".nav-right span");
-        const navImg = document.querySelector(".nav-avatar");
-        if (navNome) navNome.innerText = nomeLogado;
-        if (navImg && imgLogada) navImg.src = imgLogada;
+    // 2. Seleciona os elementos pelos NOVOS IDs do seu HTML
+    const navNome = document.getElementById("nav-user-name");
+    const navImg = document.getElementById("nav-user-img");
+
+    // 3. Aplica os dados se eles existirem na memória
+    if (nomeLogado && navNome) {
+        navNome.innerText = nomeLogado;
+    }
+    
+    if (imgLogada && navImg) {
+        navImg.src = imgLogada;
     }
 
+    // --- BUSCA DE FILMES (TMDB) ---
     console.log("Iniciando busca de filmes na API...");
     carregarBannerDinamico(requests.trending);
     getMovies(requests.trending, 'trending-movies');
     getMovies(requests.originals, 'popular-series');
 
-    // --- TROCA DE PERFIL RÁPIDA ---
-const profileTrigger = document.getElementById("profile-menu-trigger");
+    // --- LÓGICA DE CLIQUE PARA VOLTAR/TROCAR PERFIL ---
+    const profileTrigger = document.getElementById("profile-menu-trigger");
 
-if (profileTrigger) {
-    profileTrigger.addEventListener("click", () => {
-        // Opcional: Você pode apenas redirecionar sem apagar o localStorage
-        // Assim, o sistema "lembra" quem foi o último, mas deixa trocar.
-        window.location.href = "index.html";
-    });
-}
+    if (profileTrigger) {
+        profileTrigger.addEventListener("click", () => {
+            // Apenas redireciona para a tela de perfis
+            window.location.href = "index.html";
+        });
+    }
 }
 
 async function carregarBannerDinamico(url) {
