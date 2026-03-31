@@ -621,6 +621,56 @@ main {
     aspect-ratio: 16 / 9;
 }
 
+.main-footer {
+    display: flex;
+    justify-content: center;
+    background-color: #141414; /* Fundo padrão Netflix */
+    color: #808080; /* Texto cinza discreto */
+    padding: 50px 4% 20px;
+    margin-top: 50px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-social {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.footer-social a:hover {
+    opacity: 0.7;
+}
+
+.footer-dev-info {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+.footer-dev-info strong {
+    color: #fff;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 740px) {
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* ==========================================================================
    9. Responsividade (Mobile e Tablets)
    ========================================================================== */
