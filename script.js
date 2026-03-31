@@ -37,7 +37,7 @@ function configurarSelecaoPerfis(container) {
             // Salva e Redireciona
             localStorage.setItem("perfilNome", nomeValue);
             localStorage.setItem("perfilImg", imgPath);
-            window.location.href = "catalogo.html";
+            window.location.href = "./catalogo.html";
         });
     });
 
@@ -85,7 +85,7 @@ function vincularClickPerfil(link) {
         localStorage.setItem("perfilNome", nome);
         localStorage.setItem("perfilImg", img);
         
-        window.location.href = "catalogo.html";
+        window.location.href = "./catalogo.html";
     });
 }
 
