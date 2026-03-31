@@ -329,28 +329,55 @@ button {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Feedback visual para links da Navbar */
+.nav-links li a:hover {
+    color: #e5e5e5;
+    transition: 0.3s;
+}
+
+/* Cursor de pointer para os botões do banner */
 .featured-buttons {
-  display: flex;
-  gap: 10px;
+    display: flex;       /* Ativa o modo flexível */
+    flex-direction: row;  /* Garante que fiquem na mesma linha */
+    gap: 10px;           /* Dá um espaço entre os botões */
+    margin-top: 1.5rem;
+}
+
+/* Garante que os botões não estiquem verticalmente */
+.featured-buttons button, 
+.featured-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;         /* Impede que o botão ocupe a largura toda */
+    padding: 0.5rem 1.5rem;
+    white-space: nowrap; /* Impede que o texto quebre linha dentro do botão */
 }
 
 .btn-play {
-  background: #fff;
-  color: #000;
-  padding: 10px 25px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-right: 10px;
+    background-color: white !important;
+    color: black !important;
 }
 
-.btn-info {
-  background: rgba(109, 109, 110, 0.7);
-  color: #fff;
-  padding: 10px 25px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.1rem;
+.btn-info, .btn-add {
+    background-color: rgba(109, 109, 110, 0.7) !important;
+    color: white !important;
+}
+
+.btn-play:hover {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.btn-info:hover {
+    background-color: rgba(109, 109, 110, 0.4) !important;
+}
+
+/* Estilo para quando o perfil for clicado no menu superior */
+#profile-menu-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Fileira de Filmes */
@@ -383,6 +410,7 @@ main {
 
 /* O CARD INDIVIDUAL (O segredo está aqui) */
 .card {
+  background-color: #2f2f2f;
   /* Define largura e altura VERTICAIS fixas */
   min-width: 160px; /* Largura menor e mais parecida com Netflix */
   height: 240px; /* Proporção ~2:3 (vertical) */
@@ -407,6 +435,7 @@ main {
   object-fit: cover; /* ESSENCIAL: Faz a imagem horizontal preencher o espaço vertical cortando as bordas, sem distorcer */
   border-radius: 4px;
   display: block;
+  transition: opacity 0.5s ease;
 }
 
 .card img:hover {
@@ -556,6 +585,40 @@ main {
 /* Ajuste para esconder o banner quando o vídeo aparecer */
 .modal-header-img.hidden {
   display: none;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: row !important; /* O !important força a regra caso haja conflito */
+    gap: 15px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.modal-actions button {
+    flex: 0 1 auto; /* Impede que os botões tentem crescer e empurrar um ao outro */
+}
+
+#modal-overview {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #d2d2d2;
+    margin-bottom: 20px;
+    max-width: 80%; /* Evita que o texto encoste nas bordas em telas grandes */
+}
+
+.modal-metadata {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+#modal-video-container {
+    background-color: #000; /* Fundo preto para disfarçar falhas do player */
+    width: 100%;
+    aspect-ratio: 16 / 9;
 }
 
 /* ==========================================================================
