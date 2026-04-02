@@ -74,11 +74,35 @@ button {
   text-align: center;
 }
 
+/* Centraliza a seção inteira */
+.profile-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px; /* Espaço do header */
+}
+
+/* Estilo para o <h1> (O título principal da marca) */
 .profile-selection h1 {
-  font-size: 3.5vw; /* Tamanho responsivo baseado na largura da tela */
-  font-weight: 500;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+    color: #ffff;
+    font-size: 3.5rem; /* Título bem grande */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.1;
+    /* Adiciona um leve brilho/sombra para profundidade */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Estilo para o <h2> (O subtítulo de ação) */
+.profile-selection h2 {
+    color: #808080; /* Cinza discreto da Netflix */
+    font-size: 1.6rem;
+    font-weight: 400; /* Peso normal */
+    margin-bottom: 40px; /* Espaço para a lista de perfis */
+    text-align: center;
 }
 
 /* ==========================================================================
