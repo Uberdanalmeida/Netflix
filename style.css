@@ -8,7 +8,8 @@
 }
 
 body {
-  background-color: #141414; /* Preto característico da Netflix */
+  background-image: url(assets/fundo-netflix.png);
+  background-size: cover;
   color: #fff;
   font-family:
     "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fonte padrão */
