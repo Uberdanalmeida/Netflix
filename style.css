@@ -8,13 +8,24 @@
 }
 
 body {
-  background-image: url(assets/fundo-netflix.png);
   background-size: cover;
   color: #fff;
   font-family:
     "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fonte padrão */
   -webkit-font-smoothing: antialiased; /* Melhora a renderização no Mac */
   overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+}
+
+/* FUNDO SOMENTE NA TELA DE PERFIS */
+.page-index {
+  background-image: url(assets/fundo-netflix.png);
+  background-size: cover;
+}
+
+/* REMOVE FUNDO NO CATÁLOGO */
+.page-catalogo {
+  background-color: #141414;
+  background-image: none;
 }
 
 body::before {
