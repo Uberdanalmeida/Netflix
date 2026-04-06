@@ -17,6 +17,18 @@ body {
   overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
 }
 
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Camada escura com 70% de opacidade */
+    backdrop-filter: blur(5px); /* Adiciona um desfoque suave à imagem de fundo */
+    z-index: 1; /* Garante que fique atrás do conteúdo */
+}
+
 /* Links não devem ter sublinhado e herdam a cor do pai */
 a {
   text-decoration: none;
@@ -77,51 +89,102 @@ button {
 
 /* Centraliza a seção inteira */
 .profile-selection {
+    position: relative;
+    z-index: 2; /* Fica acima da camada de desfoque */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-top: 50px; /* Espaço do header */
+    padding-top: 10vh; /* Ajuste o topo se necessário */
 }
 
-/* Estilo para o <h1> (O título principal da marca) */
+/* Título Principal (h1) */
 .profile-selection h1 {
-    color: #ffff;
-    font-size: 3.5rem; /* Título bem grande */
+    color: #fff; /* Branco puro para contraste máximo */
+    font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
     text-align: center;
-    line-height: 1.1;
-    /* Adiciona um leve brilho/sombra para profundidade */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+    /* Adiciona sombras de texto para legibilidade */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0,0,0,0.5);
 }
 
-/* Estilo para o <h2> (O subtítulo de ação) */
+/* Subtítulo (Quem está assistindo?) */
 .profile-selection h2 {
-    color: #808080; /* Cinza discreto da Netflix */
-    font-size: 1.6rem;
-    font-weight: 400; /* Peso normal */
-    margin-bottom: 40px; /* Espaço para a lista de perfis */
-    text-align: center;
+    color: #e5e5e5; /* Um cinza muito claro, quase branco */
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* ==========================================================================
    4. Lista de Perfis (A "Grid")
    ========================================================================== */
+/* Container da lista de perfis */
 .profile-list {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2vw; /* Espaçamento responsivo entre os perfis */
-  margin-bottom: 4em;
-  flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    display: flex;
+    gap: 30px; /* Espaço entre os cards */
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
+/* Estilo Base do Card de Perfil */
 .profile-item {
-  width: 10vw; /* Largura responsiva do card */
-  min-width: 84px; /* Tamanho mínimo para mobile */
-  max-width: 150px; /* Tamanho máximo para desktop */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transição suave para o efeito de hover */
+}
+
+/* O Avatar (A imagem redonda/quadrada) */
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px; /* Cantos levemente arredondados */
+    overflow: hidden;
+    position: relative;
+    
+    /* BORDA INICIAL (sutil, para separar do fundo escuro) */
+    border: 3px solid #333; 
+    
+    /* SOMBRA DO CARD (crucial para o destaque) */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.6); 
+    
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* O Nome do Perfil */
+.profile-item figcaption {
+    color: #e5e5e5;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* --- EFEITO DE HOVER (Quando passa o mouse) --- */
+.profile-item:hover {
+    transform: scale(1.05); /* Aumenta o card levemente */
+}
+
+/* A borda fica branca brilhante e a sombra aumenta */
+.profile-item:hover .profile-avatar {
+    border-color: #fff; /* Borda branca idêntica à Netflix */
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.9);
+}
+
+/* O nome fica branco puro */
+.profile-item:hover figcaption {
+    color: #fff;
 }
 
 /* ==========================================================================
@@ -132,26 +195,6 @@ button {
 .profile-link {
   display: block;
   width: 100%;
-}
-
-/* Container do Avatar (necessário para o efeito de borda) */
-.profile-avatar {
-  width: 100%;
-  position: relative;
-  border: 0.3vw solid transparent; /* Borda invisível para evitar pulos no hover */
-  border-radius: 4px;
-  transition:
-    transform 0.2s ease-out,
-    border-color 0.2s ease-out; /* Animação suave */
-}
-
-/* Imagem do Avatar */
-.profile-avatar img {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Garante que seja quadrado perfeito */
-  object-fit: cover; /* Mantém a proporção da imagem gerada */
-  border-radius: 4px;
-  display: block;
 }
 
 /* Legenda (Nome do Perfil) */
