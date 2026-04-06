@@ -267,31 +267,6 @@ button {
   color: #fff;
 }
 
-/* ==========================================================================
-   8. Botão "Gerenciar Perfis" (Rodapé)
-   ========================================================================== */
-.profile-actions {
-  margin-top: 2em;
-}
-
-.manage-btn {
-  border: 1px solid #808080;
-  color: #808080;
-  text-transform: uppercase;
-  padding: 0.5em 1.5em;
-  font-size: 1.2vw;
-  min-font-size: 13px;
-  letter-spacing: 2px;
-  transition:
-    border-color 0.2s ease-out,
-    color 0.2s ease-out;
-}
-
-.manage-btn:hover {
-  border-color: #fff;
-  color: #fff;
-}
-
 /* Navbar do Catálogo */
 .nav-catalogo {
   display: flex;
