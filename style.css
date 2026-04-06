@@ -718,67 +718,91 @@ main {
     color: #fff;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 740px) {
-    .footer-links {
-        grid-template-columns: repeat(2, 1fr);
+/* ==========================================================================
+   9. Responsividade Total (Mobile, Tablet e Desktop)
+   ========================================================================== */
+
+/* Ajuste para Tablets (Até 800px) */
+@media (max-width: 800px) {
+    .profile-selection h1 {
+        font-size: 2.2rem;
+        padding: 0 20px;
+    }
+
+    .profile-selection h2 {
+        font-size: 1.4rem;
+    }
+
+    .profile-list {
+        gap: 20px;
+    }
+
+    /* Reduz um pouco o tamanho dos avatares para caberem 3 na linha */
+    .profile-avatar, 
+    .add-profile-btn .icon-wrapper,
+    .add-profile-btn {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-item {
+        width: 120px;
+    }
+
+    .add-profile-btn .icon-wrapper {
+        font-size: 4rem;
     }
 }
 
-/* ==========================================================================
-   9. Responsividade (Mobile e Tablets)
-   ========================================================================== */
-
-/* Para telas de Tablets e Celulares Grandes (até 800px) */
-@media (max-width: 800px) {
-  .profile-selection h1 {
-    font-size: 30px; /* Título menor para não ocupar a tela toda */
-    margin-bottom: 20px;
-  }
-
-  .profile-list {
-    gap: 15px; /* Diminui o espaço entre os perfis */
-  }
-
-  .profile-item {
-    width: 120px; /* Fixa um tamanho confortável para o toque */
-  }
-
-  .profile-avatar figcaption {
-    font-size: 14px; /* Texto legível no celular */
-  }
-
-  .manage-btn {
-    font-size: 14px;
-    padding: 8px 20px;
-  }
-}
-
-/* Para Celulares Pequenos (até 480px) */
+/* Ajuste para Celulares (Até 480px) */
 @media (max-width: 480px) {
-  .top-navigation {
-    height: 50px;
-    justify-content: center; /* Centraliza o logo no mobile */
-    padding: 0;
-  }
+    .profile-gate-container {
+        padding: 20px;
+    }
 
-  .top-navigation .logo {
-    height: 20px; /* Logo mais delicada */
-  }
+    .profile-selection h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
 
-  .profile-selection h1 {
-    font-size: 24px;
-  }
+    .profile-selection h2 {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
 
-  .profile-list {
-    display: grid; /* Muda para Grid para organizar melhor em telas estreitas */
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas de perfis */
-    justify-items: center;
-    padding: 0 20px;
-  }
+    /* Transforma a lista em 2 colunas para não esmagar os nomes */
+    .profile-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 25px;
+        justify-items: center;
+    }
 
-  .profile-item {
-    width: 100%; /* Ocupa o espaço da coluna do grid */
-    max-width: 110px;
-  }
+    .profile-item, 
+    .profile-avatar, 
+    .add-profile-btn,
+    .add-profile-btn .icon-wrapper {
+        width: 110px; /* Tamanho ideal para telas estreitas */
+        height: 110px;
+    }
+
+    /* Ajusta o tamanho do texto para não quebrar */
+    .profile-item figcaption {
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+
+    .add-profile-btn .icon-wrapper {
+        font-size: 3.5rem;
+    }
+
+    /* Centraliza o logo no mobile */
+    .top-navigation {
+        justify-content: center;
+        padding: 10px;
+    }
+    
+    .top-navigation .logo {
+        height: 25px;
+    }
 }
