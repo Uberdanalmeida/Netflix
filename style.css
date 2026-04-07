@@ -29,15 +29,15 @@ body {
 }
 
 body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Camada escura com 70% de opacidade */
-    backdrop-filter: blur(5px); /* Adiciona um desfoque suave à imagem de fundo */
-    z-index: 1; /* Garante que fique atrás do conteúdo */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Camada escura com 70% de opacidade */
+  backdrop-filter: blur(5px); /* Adiciona um desfoque suave à imagem de fundo */
+  z-index: 1; /* Garante que fique atrás do conteúdo */
 }
 
 /* Links não devem ter sublinhado e herdam a cor do pai */
@@ -100,33 +100,35 @@ button {
 
 /* Centraliza a seção inteira */
 .profile-selection {
-    position: relative;
-    z-index: 2; /* Fica acima da camada de desfoque */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10vh; /* Ajuste o topo se necessário */
+  position: relative;
+  z-index: 2; /* Fica acima da camada de desfoque */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10vh; /* Ajuste o topo se necessário */
 }
 
 /* Título Principal (h1) */
 .profile-selection h1 {
-    color: #fff; /* Branco puro para contraste máximo */
-    font-size: 3.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 30px;
-    /* Adiciona sombras de texto para legibilidade */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0,0,0,0.5);
+  color: #fff; /* Branco puro para contraste máximo */
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  /* Adiciona sombras de texto para legibilidade */
+  text-shadow:
+    2px 2px 8px rgba(0, 0, 0, 0.8),
+    -1px -1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Subtítulo (Quem está assistindo?) */
 .profile-selection h2 {
-    color: #e5e5e5; /* Um cinza muito claro, quase branco */
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 50px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+  color: #e5e5e5; /* Um cinza muito claro, quase branco */
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 50px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* ==========================================================================
@@ -134,68 +136,70 @@ button {
    ========================================================================== */
 /* Container da lista de perfis */
 .profile-list {
-    display: flex;
-    gap: 30px; /* Espaço entre os cards */
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  gap: 30px; /* Espaço entre os cards */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Estilo Base do Card de Perfil */
 .profile-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease; /* Transição suave para o efeito de hover */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Transição suave para o efeito de hover */
 }
 
 /* O Avatar (A imagem redonda/quadrada) */
 .profile-avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 4px; /* Cantos levemente arredondados */
-    overflow: hidden;
-    position: relative;
-    
-    /* BORDA INICIAL (sutil, para separar do fundo escuro) */
-    border: 3px solid #333; 
-    
-    /* SOMBRA DO CARD (crucial para o destaque) */
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.6); 
-    
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 150px;
+  height: 150px;
+  border-radius: 4px; /* Cantos levemente arredondados */
+  overflow: hidden;
+  position: relative;
+
+  /* BORDA INICIAL (sutil, para separar do fundo escuro) */
+  border: 3px solid #333;
+
+  /* SOMBRA DO CARD (crucial para o destaque) */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.6);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* O Nome do Perfil */
 .profile-item figcaption {
-    color: #e5e5e5;
-    font-size: 1.2rem;
-    margin-top: 15px;
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  color: #e5e5e5;
+  font-size: 1.2rem;
+  margin-top: 15px;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 /* --- EFEITO DE HOVER (Quando passa o mouse) --- */
 .profile-item:hover {
-    transform: scale(1.05); /* Aumenta o card levemente */
+  transform: scale(1.05); /* Aumenta o card levemente */
 }
 
 /* A borda fica branca brilhante e a sombra aumenta */
 .profile-item:hover .profile-avatar {
-    border-color: #fff; /* Borda branca idêntica à Netflix */
-    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.9);
+  border-color: #fff; /* Borda branca idêntica à Netflix */
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.9);
 }
 
 /* O nome fica branco puro */
 .profile-item:hover figcaption {
-    color: #fff;
+  color: #fff;
 }
 
 /* ==========================================================================
@@ -385,53 +389,54 @@ button {
 
 /* Feedback visual para links da Navbar */
 .nav-links li a:hover {
-    color: #e5e5e5;
-    transition: 0.3s;
+  color: #e5e5e5;
+  transition: 0.3s;
 }
 
 /* Cursor de pointer para os botões do banner */
 .featured-buttons {
-    display: flex;       /* Ativa o modo flexível */
-    flex-direction: row;  /* Garante que fiquem na mesma linha */
-    gap: 10px;           /* Dá um espaço entre os botões */
-    margin-top: 1.5rem;
+  display: flex; /* Ativa o modo flexível */
+  flex-direction: row; /* Garante que fiquem na mesma linha */
+  gap: 10px; /* Dá um espaço entre os botões */
+  margin-top: 1.5rem;
 }
 
 /* Garante que os botões não estiquem verticalmente */
-.featured-buttons button, 
+.featured-buttons button,
 .featured-buttons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;         /* Impede que o botão ocupe a largura toda */
-    padding: 0.5rem 1.5rem;
-    white-space: nowrap; /* Impede que o texto quebre linha dentro do botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto; /* Impede que o botão ocupe a largura toda */
+  padding: 0.5rem 1.5rem;
+  white-space: nowrap; /* Impede que o texto quebre linha dentro do botão */
 }
 
 .btn-play {
-    background-color: white !important;
-    color: black !important;
+  background-color: white !important;
+  color: black !important;
 }
 
-.btn-info, .btn-add {
-    background-color: rgba(109, 109, 110, 0.7) !important;
-    color: white !important;
+.btn-info,
+.btn-add {
+  background-color: rgba(109, 109, 110, 0.7) !important;
+  color: white !important;
 }
 
 .btn-play:hover {
-    background-color: rgba(255, 255, 255, 0.75) !important;
+  background-color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .btn-info:hover {
-    background-color: rgba(109, 109, 110, 0.4) !important;
+  background-color: rgba(109, 109, 110, 0.4) !important;
 }
 
 /* Estilo para quando o perfil for clicado no menu superior */
 #profile-menu-trigger {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Fileira de Filmes */
@@ -642,80 +647,80 @@ main {
 }
 
 .modal-actions {
-    display: flex;
-    flex-direction: row !important; /* O !important força a regra caso haja conflito */
-    gap: 15px;
-    margin-top: 20px;
-    align-items: center;
+  display: flex;
+  flex-direction: row !important; /* O !important força a regra caso haja conflito */
+  gap: 15px;
+  margin-top: 20px;
+  align-items: center;
 }
 
 .modal-actions button {
-    flex: 0 1 auto; /* Impede que os botões tentem crescer e empurrar um ao outro */
+  flex: 0 1 auto; /* Impede que os botões tentem crescer e empurrar um ao outro */
 }
 
 #modal-overview {
-    line-height: 1.6;
-    font-size: 1rem;
-    color: #d2d2d2;
-    margin-bottom: 20px;
-    max-width: 80%; /* Evita que o texto encoste nas bordas em telas grandes */
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #d2d2d2;
+  margin-bottom: 20px;
+  max-width: 80%; /* Evita que o texto encoste nas bordas em telas grandes */
 }
 
 .modal-metadata {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 
 #modal-video-container {
-    background-color: #000; /* Fundo preto para disfarçar falhas do player */
-    width: 100%;
-    aspect-ratio: 16 / 9;
+  background-color: #000; /* Fundo preto para disfarçar falhas do player */
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .main-footer {
-    display: flex;
-    justify-content: center;
-    background-color: #141414; /* Fundo padrão Netflix */
-    color: #808080; /* Texto cinza discreto */
-    padding: 50px 4% 20px;
-    margin-top: 50px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: #141414; /* Fundo padrão Netflix */
+  color: #808080; /* Texto cinza discreto */
+  padding: 50px 4% 20px;
+  margin-top: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .footer-container {
-    max-width: 1000px;
-    margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .footer-social {
-    text-align: center;
-    margin-bottom: 25px;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .footer-social a {
-    color: #fff;
-    font-size: 1.5rem;
-    margin-right: 20px;
-    text-decoration: none;
-    transition: opacity 0.3s;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 20px;
+  text-decoration: none;
+  transition: opacity 0.3s;
 }
 
 .footer-social a:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .footer-dev-info {
-    text-align: center;
-    font-size: 12px;
-    margin-top: 20px;
-    line-height: 1.8;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  line-height: 1.8;
 }
 
 .footer-dev-info strong {
-    color: #fff;
+  color: #fff;
 }
 
 /* ==========================================================================
@@ -724,85 +729,85 @@ main {
 
 /* Ajuste para Tablets (Até 800px) */
 @media (max-width: 800px) {
-    .profile-selection h1 {
-        font-size: 2.2rem;
-        padding: 0 20px;
-    }
+  .profile-selection h1 {
+    font-size: 2.2rem;
+    padding: 0 20px;
+  }
 
-    .profile-selection h2 {
-        font-size: 1.4rem;
-    }
+  .profile-selection h2 {
+    font-size: 1.4rem;
+  }
 
-    .profile-list {
-        gap: 20px;
-    }
+  .profile-list {
+    gap: 20px;
+  }
 
-    /* Reduz um pouco o tamanho dos avatares para caberem 3 na linha */
-    .profile-avatar, 
-    .add-profile-btn .icon-wrapper,
-    .add-profile-btn {
-        width: 120px;
-        height: 120px;
-    }
+  /* Reduz um pouco o tamanho dos avatares para caberem 3 na linha */
+  .profile-avatar,
+  .add-profile-btn .icon-wrapper,
+  .add-profile-btn {
+    width: 120px;
+    height: 120px;
+  }
 
-    .profile-item {
-        width: 120px;
-    }
+  .profile-item {
+    width: 120px;
+  }
 
-    .add-profile-btn .icon-wrapper {
-        font-size: 4rem;
-    }
+  .add-profile-btn .icon-wrapper {
+    font-size: 4rem;
+  }
 }
 
 /* Ajuste para Celulares (Até 480px) */
 @media (max-width: 480px) {
-    .profile-gate-container {
-        padding: 20px;
-    }
+  .profile-gate-container {
+    padding: 20px;
+  }
 
-    .profile-selection h1 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-    }
+  .profile-selection h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
 
-    .profile-selection h2 {
-        font-size: 1.1rem;
-        margin-bottom: 30px;
-    }
+  .profile-selection h2 {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
 
-    /* Transforma a lista em 2 colunas para não esmagar os nomes */
-    .profile-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 25px;
-        justify-items: center;
-    }
+  /* Transforma a lista em 2 colunas para não esmagar os nomes */
+  .profile-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    justify-items: center;
+  }
 
-    .profile-item, 
-    .profile-avatar, 
-    .add-profile-btn,
-    .add-profile-btn .icon-wrapper {
-        width: 110px; /* Tamanho ideal para telas estreitas */
-        height: 110px;
-    }
+  .profile-item,
+  .profile-avatar,
+  .add-profile-btn,
+  .add-profile-btn .icon-wrapper {
+    width: 110px; /* Tamanho ideal para telas estreitas */
+    height: 110px;
+  }
 
-    /* Ajusta o tamanho do texto para não quebrar */
-    .profile-item figcaption {
-        font-size: 0.9rem;
-        margin-top: 10px;
-    }
+  /* Ajusta o tamanho do texto para não quebrar */
+  .profile-item figcaption {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
 
-    .add-profile-btn .icon-wrapper {
-        font-size: 3.5rem;
-    }
+  .add-profile-btn .icon-wrapper {
+    font-size: 3.5rem;
+  }
 
-    /* Centraliza o logo no mobile */
-    .top-navigation {
-        justify-content: center;
-        padding: 10px;
-    }
-    
-    .top-navigation .logo {
-        height: 25px;
-    }
+  /* Centraliza o logo no mobile */
+  .top-navigation {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .top-navigation .logo {
+    height: 25px;
+  }
 }
