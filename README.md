@@ -1,3 +1,5 @@
+![Clone-Netflix](/assets/projeto-clone-netflix.png)
+
 # 🎬 Netflix Clone - Portfólio
 Este é um projeto de estudo que recria a interface da Netflix utilizando a API do TMDB (The Movie Database) para listar filmes e séries em tempo real. O foco principal foi o domínio de Manipulação de DOM, Consumo de APIs Assíncronas e Persistência de Dados Local.
 
