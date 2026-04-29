@@ -1,9 +1,11 @@
 ![Clone-Netflix](/assets/projeto-clone-netflix.png)
 
 # 🎬 Netflix Clone - Portfólio
+
 Este é um projeto de estudo que recria a interface da Netflix utilizando a API do TMDB (The Movie Database) para listar filmes e séries em tempo real. O foco principal foi o domínio de Manipulação de DOM, Consumo de APIs Assíncronas e Persistência de Dados Local.
 
 ## 🚀 Tecnologias Utilizadas
+
 HTML5: Estrutura semântica da aplicação.
 
 CSS3: Estilização com foco em Flexbox, Grid e Responsividade.
@@ -25,7 +27,7 @@ LocalStorage: Armazenamento dos perfis criados pelo usuário.
 ✅ Adicionar filmes à "Minha Lista" (localStorage)  
 ✅ Busca de filmes e séries  
 ✅ Navegação entre categorias (Início, Séries, Filmes, Minha Lista)  
-✅ Interface responsiva estilo Netflix  
+✅ Interface responsiva estilo Netflix
 
 Gerenciamento de Perfis: Permite criar novos perfis (como "Lucas" ou "Thamirys") que ficam salvos no navegador.
 
@@ -37,7 +39,6 @@ Modal de Detalhes: Exibição de sinopse, relevância, ano de lançamento e trai
 
 Interface Responsiva: Adaptada para diferentes tamanhos de tela.
 
-
 ---
 
 ## 🔑 Configuração da API
@@ -45,6 +46,7 @@ Interface Responsiva: Adaptada para diferentes tamanhos de tela.
 Este projeto utiliza a API do TMDB.
 
 ### 1. Crie uma conta:
+
 👉 https://www.themoviedb.org/
 
 ### 2. Gere sua API Key
@@ -55,3 +57,4 @@ Este projeto utiliza a API do TMDB.
 const API_KEY = "SUA_API_KEY_AQUI";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
+```
